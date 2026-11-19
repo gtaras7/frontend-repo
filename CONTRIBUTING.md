@@ -1,35 +1,15 @@
-# Your first CardioGuard commit
+# Contributing to CardioGuard
 
-**Edit a component → stage it → commit.** Work on your own branch and open a pull request to `main` when your change is ready. After cloning, run `npm ci` once with Node 22 to install the project dependencies and set up Husky.
+## Students: open a pull request
 
-For example, if your ticket changes the shared Button:
+1. Make your change on a branch and try it locally. If you don’t have write access, use a branch in your own fork.
+2. Open a pull request to `gtaras7/frontend-repo:main`. Say what changed and how you tested it. Ask Giorgos (`@gtaras7`) for review.
+3. Push any requested fixes to the same branch. Giorgos approves and merges; students do not merge PRs.
 
-```sh
-git switch -c fix/button-contrast
-# Edit components/ui/01-actions/Button.tsx, then review your change.
-git diff
-git add components/ui/01-actions/Button.tsx
-git diff --staged
-git commit -m "fix: improve button contrast"
-```
+For a UI change, describe the screen and language you tried. Use synthetic data in screenshots. GitHub Desktop or the command line are both fine.
 
-When you commit, Git calls the hook installed by Husky. The hook runs `lint-staged` on the files you staged. For TypeScript, ESLint catches configured code issues and fixes the ones it can. Prettier then formats the code. If the hook stops the commit, read the error, fix the file, stage it again and retry.
+## Review and merge: Giorgos
 
-## Why these files are here
+Giorgos (`@gtaras7`) is the sole senior reviewer and merger. He reviews student PRs and merges them after `verify` passes. Resolve review conversations before merging. For UI changes, check the relevant screens in Greek and English and run the applicable Playwright tests; Playwright is separate from `verify`.
 
-| File or folder | What it does for you |
-| --- | --- |
-| [`.husky/`](.husky/) | Keeps the team's Git hooks in the repo so each clone uses the same pre-commit steps. |
-| [`.husky/pre-commit`](.husky/pre-commit) | Runs `npx lint-staged` before Git creates your commit. It does not build the app or run Playwright. |
-| `.husky/_/` | Holds the local helper scripts Husky generates during installation. You don't edit or commit them. |
-| [`package.json`](package.json) | The `prepare` script sets up Husky. The `lint-staged` rules run ESLint and Prettier on staged `.ts` and `.tsx` files, and Prettier on staged JSON, Markdown and CSS unless ignored. |
-| [`.prettierrc`](.prettierrc) | Sets the team's formatting rules, including double quotes, semicolons and two-space indentation. Your editor and the CLI can use the same settings. |
-| [`.prettierignore`](.prettierignore) | Tells Prettier which files to skip, including build output, `design-tokens/`, `docs/`, Markdown and the lockfile. It does not tell Git to ignore them. |
-
-`npm run format` **rewrites** eligible files across the repo, including unstaged files. Review `git diff` before staging the result. `npm run format:check` **only reports** formatting differences and exits with an error if it finds any. Use it when you want to check without changing anything.
-
-## Getting your change into `main`
-
-Push your feature branch, open a pull request and ask a teammate to review it. Wait for one human approval and a passing [`verify` CI job](.github/workflows/ci.yml) before merging. Run the [local pre-PR checks](README.md#run-it) too; Playwright is not part of `verify`.
-
-Husky gives fast feedback on your laptop. On GitHub, branch protection requires a passing `verify` check and one approving review before merging to `main`. Push to your feature branch and open a pull request.
+Husky, ESLint and Prettier run automatically on eligible staged files. Students do not need a separate formatting checklist. If a commit fails, fix the reported issue or ask the reviewer for help. See [what the tooling files do](https://github.com/gtaras7/frontend-repo/wiki/Tooling-files-explained) and [testing and troubleshooting](https://github.com/gtaras7/frontend-repo/wiki/Testing-and-troubleshooting) for the commands.

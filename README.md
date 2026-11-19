@@ -11,27 +11,18 @@ For your first commit, follow the [student workflow and guide to Husky and Prett
 ## Run it
 
 ```bash
-npm install
+npm ci                         # use Node.js 22
 cp .env.example .env.local     # enables local onboarding mocks; configure NestJS URL as needed
 npm run dev                    # http://localhost:3000 -> locale-prefixed onboarding
 ```
 
-| Command | What it does | Where it must pass |
-|---|---|---|
-| `npm run dev` | dev server | — |
-| `npm run lint` | ESLint, incl. the BFF-contract import ban | CI + pre-commit |
-| `npm run typecheck` | `tsc --noEmit` | CI + before a PR |
-| `npm run format` | Prettier | pre-commit |
-| `npm run format:check` | Prettier check | CI + before a PR |
-| `npm run build` | production build | CI |
-| `npm run e2e` | Playwright at 1440x900 | before a PR |
+## How to contribute
 
-`npm run e2e` starts or reuses a dev server and enables onboarding mocks for the server it
-starts. To use an existing server explicitly, start it with `NEXT_PUBLIC_MOCK_ONBOARDING=1`
-and run `npm run e2e -- --config=playwright.local.config.ts`. This config does not start a
-server; its default origin is `http://127.0.0.1:3000`. Both configs accept
-`PLAYWRIGHT_BASE_URL`. CI currently runs the static checks, dependency audit, BFF gate and
-production build; E2E remains a local pre-PR check.
+1. Make your change on a branch and try it locally. If you don’t have write access, use a branch in your own fork.
+2. Open a pull request to `gtaras7/frontend-repo:main`. Say what changed and how you tested it. Ask Giorgos (`@gtaras7`) for review.
+3. Push any requested fixes to the same branch. Giorgos approves and merges; students do not merge PRs.
+
+Giorgos (`@gtaras7`) is the sole senior reviewer and merger. He reviews student PRs and merges them after `verify` passes. For help, see the [student workflow](https://github.com/gtaras7/frontend-repo/wiki/Commit-and-PR-workflow) or [testing and troubleshooting](https://github.com/gtaras7/frontend-repo/wiki/Testing-and-troubleshooting).
 
 Production builds require an `https://` `NEXT_PUBLIC_API_URL` and always use NestJS rather
 than onboarding mocks. See `.env.example` and `docs/security-hardening.md`.

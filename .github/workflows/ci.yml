@@ -1,0 +1,47 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+
+      # Each of these blocks the merge. No "should pass" in the PR.
+      - name: Lint
+        run: npm run lint
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Format check
+        run: npm run format:check
+      - name: Dependency audit
+        run: npm audit --audit-level=high
+      - name: Reject mock onboarding in CI
+        run: |
+          if [ "${NEXT_PUBLIC_MOCK_ONBOARDING:-}" = "1" ]; then
+            echo "::error::NEXT_PUBLIC_MOCK_ONBOARDING=1 must not be set in CI builds."
+            exit 1
+          fi
+      - name: BFF contract gate
+        run: |
+          if grep -rEl "from ['\"]@?prisma|from ['\"]\.\.?/.*\bdb\b|export async function (GET|POST|PUT|PATCH|DELETE)|['\"]use server['\"]" app lib hooks stores 2>/dev/null; then
+            echo "::error::BFF contract violated: API routes, server actions or db imports found in the Next.js app."
+            exit 1
+          fi
+      - name: Build
+        env:
+          # Production guard in lib/api/client.ts requires https://; placeholder for CI compile only.
+          NEXT_PUBLIC_API_URL: https://api.example.invalid
+        run: npm run build

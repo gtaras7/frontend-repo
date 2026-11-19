@@ -79,7 +79,7 @@ Structure is feature-first, not layer-first. Each screen is a vertical slice: ro
 1. **GDPR: never paste real patient data into any AI tool.** Synthetic/mock data only, always, in prompts, in test fixtures, in bug reports, everywhere.
 2. **BFF contract holds.** No API routes, no server actions, no db imports in the Next.js codebase. CI enforces it.
 3. **No hardcoded strings.** Any visible string lives in i18n (`i18n/el.json`, `i18n/en.json`). If you write literal text in a component, you did it wrong.
-4. **Every PR gets an AI review pass plus a human review before merge.** Architecture gates are enforced in CI.
+4. **Every student PR gets an AI review pass and approval from Giorgos (`@gtaras7`) before he merges it.** AI feedback never counts as his approval. Architecture gates are enforced in CI.
 5. **Humans decide architecture and UX. AI proposes, never decides alone.** If a change touches architecture, auth, streaming edge cases, or GDPR surfaces, flag it for a human instead of shipping it.
 6. **Figma is the single source of truth for design.** The tokens and the 42 primitives are ported from it; the vendored `Design System/` export in the project folder is stale. Figma beats it, beats a screenshot, and beats your judgement.
 </non_negotiables>
@@ -87,9 +87,9 @@ Structure is feature-first, not layer-first. Each screen is a vertical slice: ro
 <how_work_gets_done>
 1. Human writes the ticket: acceptance criteria, screen reference, edge cases. Short and precise.
 2. AI generates the first draft in the repo, with full project context (this file included).
-3. Senior reviews the diff, corrects structure and edge cases.
-4. Junior integrates, wires data, writes the tests.
-5. PR goes through an AI review pass plus a human review before merge.
+3. The student tries the change locally and opens a PR from their branch or fork.
+4. Giorgos (`@gtaras7`), the sole senior, reviews the diff. The student pushes requested fixes to the same branch.
+5. Only Giorgos merges the student PR after approval and a passing `verify` check.
 
 Rule of thumb: AI writes about 80% of the code; humans own the 20% that matters — auth, streaming edge cases, GDPR surfaces, final UX calls.
 </how_work_gets_done>
@@ -105,7 +105,7 @@ Use the five prompts in `docs/frontend-ai-prompts.md`.
 
 - **Prompt 1 — implement a screen from Figma.** XML-tagged, design-fidelity build. Reads this file and its Next.js note first, then `design-tokens/tokens.ts`, `components/ui/README.md` and `docs/onboarding-desktop-handoff.md`. Stops for a readiness report (route, components, tokens, i18n keys, gaps) before writing any code.
 - **Prompt 2 — investigate and fix a bug.** Ranked causes plus one confirming check before any fix. Never silences an error to make it disappear.
-- **Prompt 3 — finish and pre-check before the PR.** Convention review of the diff, then the fixes, then raw `npm run lint` / `npm run typecheck` / `npm run format:check` / `npm run build` output and a drafted PR description. Mandatory before every PR.
+- **Prompt 3 — finish and pre-check before the PR.** Convention review of the diff, then the fixes, then raw `npm run lint` / `npm run typecheck` / `npm run format:check` / `npm run build` output and a drafted PR description. This is agent verification guidance, not a manual student checklist.
 - **Prompt 4 — align existing code.** Consistency pass over freestyle or prototype code, behaviour unchanged.
 - **Prompt 5 — review someone else's PR.** The AI review pass required by non-negotiable 4 — checks tokens, i18n coverage, accessibility and the BFF boundary.
 </prompt_pack>
