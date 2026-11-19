@@ -1,0 +1,346 @@
+{
+  "meta": {
+    "title": "CardioGuard AI",
+    "description": "Conversational cardiovascular prevention assistant."
+  },
+  "brand": {
+    "wordmark": "CardioGuard",
+    "tagline": "Your heart health companion",
+    "privacyLine1": "Privacy by design. Nothing is shared without your consent.",
+    "privacyLine2": "CardioGuard is a prevention education tool. It is not a medical device.",
+    "partnerLogoAlt": "Agios Loukas Hospital"
+  },
+  "onboarding": {
+    "progressLabel": "Step {step} of {total}",
+    "continue": "Continue",
+    "goBack": "Go to previous step",
+    "goForward": "Go to next step",
+    "step01": {
+      "whyTitle": "Why CardioGuard",
+      "features": {
+        "numbers": {
+          "title": "Understand your numbers",
+          "body": "See how your readings and habits trend over time."
+        },
+        "data": {
+          "title": "Your data stays yours",
+          "body": "Encrypted and never sold. Nothing is shared without your consent."
+        },
+        "habits": {
+          "title": "Build healthier habits",
+          "body": "Small, evidence based steps that fit into your day."
+        },
+        "notMedical": {
+          "title": "Not a medical device",
+          "body": "Education and prevention only. In an emergency, call your local number."
+        }
+      },
+      "error": {
+        "title": "Something went wrong",
+        "body": "CardioGuard could not finish starting up. Check your internet connection and try again. Your information is safe and nothing has been lost.",
+        "retry": "Try again",
+        "support": "Need help? Contact support",
+        "a11yNote": "Retry receives focus when the error appears. No health assessment is implied."
+      }
+    },
+    "step02": {
+      "title": "Welcome to CardioGuard",
+      "intro": "CardioGuard helps you understand cardiovascular prevention, track your health information, and build healthier daily habits around what you choose to share.",
+      "calloutTitle": "Not a doctor, and never in an emergency",
+      "calloutBody": "CardioGuard supports prevention education and habit guidance. It does not diagnose, treat, or replace a healthcare professional. For urgent symptoms, contact emergency services.",
+      "getStarted": "Get started",
+      "haveAccount": "I already have an account",
+      "privacyNote": "Privacy by design. Nothing is shared without your consent."
+    },
+    "step03": {
+      "eyebrow": "Privacy & safety",
+      "title": "Before we begin",
+      "intro": "You decide what CardioGuard may know and do. Please read and accept the rules that let us keep you safe.",
+      "requiredLabel": "Required to continue",
+      "counter": {
+        "required": "2 required",
+        "of": "{accepted} of 2"
+      },
+      "helper": "You must accept both. If you do not agree, no health profile will be created or processed.",
+      "statement": {
+        "notDoctor": "I understand CardioGuard is not a doctor, does not provide a diagnosis, and does not replace a healthcare professional.",
+        "notEmergency": "I understand CardioGuard is not for emergencies and I should contact local emergency services for urgent symptoms."
+      },
+      "submit": "Accept & continue",
+      "submitting": "Saving…",
+      "footnote": "Optional permissions such as notifications and health apps are never part of this step. They are offered separately and can be skipped.",
+      "error": {
+        "title": "You missed a required decision",
+        "body": "Please choose Accept for both required statements before continuing. Nothing has been saved yet. Screen reader announces the missing one."
+      }
+    },
+    "step05": {
+      "age": {
+        "eyebrow": "About you",
+        "title": "How old are you?",
+        "intro": "Age helps us tailor prevention guidance to your stage of life. It is optional and you can skip it.",
+        "optionsLabel": "Age range",
+        "options": {
+          "under35": "Under 35",
+          "35to44": "35 to 44",
+          "45to54": "45 to 54",
+          "55to64": "55 to 64",
+          "65plus": "65 or older"
+        },
+        "footnote": "Skipping records this as missing. CardioGuard will never guess your age.",
+        "demoNote": "Demo mode. Use fictitious answers. Reloading clears your answers.",
+        "resetDemo": "Reset demo account"
+      },
+      "actions": {
+        "continue": "Continue",
+        "skip": "Skip for now",
+        "saving": "Saving demo answer…",
+        "unavailable": "This step is not available yet. No answer has been saved.",
+        "error": {
+          "title": "Could not save the demo answer",
+          "body": "Your selection is still here. Try again, or check that temporary browser storage is allowed."
+        }
+      },
+      "health": {
+        "eyebrow": "Health history",
+        "title": "Health conditions",
+        "intro": "Select any that apply. Tell us your own understanding. This is user-reported information, not a diagnosis, and is not shared without consent.",
+        "options": {
+          "bloodPressure": "High blood pressure",
+          "cholesterol": "High cholesterol",
+          "diabetes": "Diabetes",
+          "heartCondition": "Heart condition",
+          "none": "None of these"
+        },
+        "medications": {
+          "title": "Medications",
+          "body": "List any you take for blood pressure, cholesterol, or heart health (optional). Everything here stays user-reported."
+        },
+        "footnote": "Everything here stays user-reported. We never label you with a diagnosis."
+      },
+      "lifestyle": {
+        "eyebrow": "About you",
+        "title": "Activity level",
+        "intro": "Tell us roughly how active you usually are in a typical week.",
+        "activity": {
+          "inactive": "Mostly inactive",
+          "light": "Lightly active",
+          "moderate": "Moderately active",
+          "very": "Very active"
+        },
+        "smokingTitle": "Smoking",
+        "smoking": {
+          "no": "I do not smoke",
+          "yes": "I smoke",
+          "preferNotToSay": "Prefer not to say"
+        }
+      },
+      "goals": {
+        "eyebrow": "Your goals",
+        "title": "What do you want to work toward?",
+        "intro": "Pick as many as you like. This shapes educational guidance only.",
+        "options": {
+          "riskFactors": "Understand my risk factors",
+          "bloodPressure": "Lower blood pressure",
+          "cholesterol": "Improve cholesterol",
+          "activity": "Get more active",
+          "nutrition": "Eat heart healthy",
+          "stress": "Reduce stress"
+        }
+      },
+      "height": {
+        "title": "Height",
+        "label": "Height (cm)",
+        "range": "Enter a height between {min} cm and {max} cm.",
+        "outsideRange": "{height, number} cm is outside the expected range.",
+        "warning": {
+          "title": "That value looks off",
+          "body": "Please check the highlighted value. It was not saved or used in any guidance."
+        },
+        "footnote": "If you are describing severe or urgent symptoms, emergency guidance will appear. This is separate from validation."
+      }
+    },
+    "step06": {
+      "eyebrow": "Permissions",
+      "title": "Optional permissions",
+      "intro": "None of these are required. You can skip every option and change your mind later. Each is explained before you decide.",
+      "options": {
+        "reminders": {
+          "title": "Reminders",
+          "description": "Get gentle nudges for logging readings and building habits."
+        },
+        "location": {
+          "title": "Location",
+          "description": "Not requested. Location is only added if a clear purpose is confirmed."
+        }
+      },
+      "save": "Save my choices & continue",
+      "skip": "Skip all for now",
+      "saving": "Saving choices…",
+      "footnote": "Imported health data never fills gaps we do not know.",
+      "unavailable": "This step is not available yet. No choices have been saved.",
+      "error": {
+        "title": "Could not save your demo choices",
+        "body": "Your choices are still here. Try again, or check that temporary browser storage is allowed."
+      }
+    },
+    "step07": {
+      "title": "Preparing your starting summary",
+      "body": "Organising what you told us (and what is still missing) into an initial experience for you. No assessment or diagnosis is being made.",
+      "status": "This usually takes a few seconds.",
+      "error": {
+        "title": "We could not finish preparing",
+        "body": "Your answers are safe and were not lost. Retry, or continue to a basic view without the personalised summary.",
+        "retry": "Try again",
+        "dashboard": "Go to dashboard without summary"
+      },
+      "unavailable": {
+        "eyebrow": "Your starting point",
+        "title": "Preparation is unavailable",
+        "disabled": "Starting summary is currently unavailable.",
+        "missing": "Create a demo account to prepare your starting summary.",
+        "error": "The demo account could not be opened. Check that your browser allows temporary storage."
+      }
+    },
+    "nextActions": {
+      "profile": {
+        "title": "Complete your profile",
+        "heightWeight": "Add height and weight to make education more specific.",
+        "weight": "Add weight to make education more specific."
+      },
+      "habit": {
+        "title": "Start a habit",
+        "body": "Pick a gentle daily goal like a short walk. General prevention guidance only."
+      },
+      "education": {
+        "title": "Browse education",
+        "body": "Read prevention topics grounded in approved sources."
+      }
+    },
+    "step08": {
+      "eyebrow": "Your starting point",
+      "title": "Here is your starting point",
+      "intro": "This reflects what you told us. It is not a diagnosis and not a risk score.",
+      "reported": "What you reported",
+      "nothingReported": "No baseline answers were reported.",
+      "fields": {
+        "age": "Age range",
+        "activity": "Activity",
+        "smoking": "Smoking",
+        "conditions": "Conditions",
+        "height": "Height",
+        "goals": "Goals",
+        "weight": "Weight",
+        "medication": "Medication"
+      },
+      "heightValue": "{height, number} cm",
+      "missingTitle": "Missing information",
+      "missingBody": "Unreported information: {fields}. Guidance that depends on it will say so.",
+      "suggested": "Suggested next actions",
+      "walking": {
+        "title": "Start a walking habit",
+        "body": "A gentle weekly activity goal is a common starting point. This is general guidance, not a prescription."
+      },
+      "footnote": "CardioGuard does not provide a risk score or a diagnosis. Educational guidance is based on general prevention principles.",
+      "dashboard": "Continue to dashboard"
+    },
+    "step09": {
+      "title": "Welcome to CardioGuard",
+      "intro": "Your start here is a launching point, not a verdict. As you add information, education becomes more specific to you.",
+      "ready": {
+        "title": "Ready to begin",
+        "body": "Keep building your profile at your own pace. Nothing blocks core education."
+      },
+      "next": "Next steps",
+      "footnote": "CardioGuard does not produce a risk score or a diagnosis. Every suggestion is educational and grounded in approved prevention sources.",
+      "startHabit": "Start with a habit",
+      "skipped": {
+        "title": "Your profile is mostly empty",
+        "body": "You skipped the optional questions. That is fine. Core education is still available.",
+        "next": "Complete it when ready",
+        "continue": "Continue to education"
+      },
+      "error": {
+        "title": "We could not reach the dashboard",
+        "body": "Your onboarding information is safe and was not lost. Retry, and if the problem continues contact support.",
+        "retry": "Try again",
+        "retrying": "Trying again…"
+      }
+    },
+    "demoAccount": {
+      "loading": "Opening demo account…",
+      "start": "Create a demo account first"
+    }
+  },
+  "register": {
+    "eyebrow": "Account",
+    "title": "Create your account",
+    "intro": "Create an account to keep your health data safe and synced across devices. Your information is encrypted and never sold.",
+    "email": {
+      "label": "Email",
+      "placeholder": "you@example.com",
+      "helper": "Used to sign in. Never shared.",
+      "error": "Enter a valid email address.",
+      "inUse": "This email address is already in use. Try another one."
+    },
+    "password": {
+      "label": "Password",
+      "placeholder": "At least 8 characters",
+      "helper": "Use a unique password.",
+      "error": "Password is too short."
+    },
+    "submit": "Create account",
+    "divider": "or",
+    "guest": "Continue as guest",
+    "footnote": "With an account your progress and health data sync across devices. Guest mode keeps you exploring with limited persistence.",
+    "validation": {
+      "title": "Please fix the highlighted fields",
+      "body": "No account was created yet. Check the messages under each field."
+    },
+    "unavailable": {
+      "account": "Account creation is not available yet. Your details have not been sent or saved.",
+      "guest": "Guest mode is not available yet. Your details have not been sent or saved."
+    },
+    "submitting": "Creating demo account…",
+    "demoNote": "Demo mode: use fictitious details only. No real account is created and no password is sent or saved.",
+    "requestError": {
+      "title": "Could not create the demo account",
+      "body": "Nothing was created. Your entries are still here. Try again, or check that temporary browser storage is allowed."
+    }
+  },
+  "shell": {
+    "nav": {
+      "chat": "Chat",
+      "health": "Health",
+      "reminders": "Reminders"
+    },
+    "cta": "New conversation",
+    "recents": "RECENT",
+    "userMeta": "Agios Loukas · patient",
+    "settings": "Settings",
+    "language": {
+      "label": "Language",
+      "el": "EL",
+      "en": "EN"
+    },
+    "screens": {
+      "chat": {
+        "title": "CardioGuard Assistant",
+        "subtitle": "Online · evidence-based guidance"
+      },
+      "health": {
+        "title": "Health"
+      },
+      "reminders": {
+        "title": "Reminders"
+      },
+      "settings": {
+        "title": "Settings"
+      }
+    },
+    "notBuilt": {
+      "title": "This screen is not built yet",
+      "body": "The shell, sidebar and navigation are in place. The screen itself ships in the next slice of this flow."
+    }
+  }
+}

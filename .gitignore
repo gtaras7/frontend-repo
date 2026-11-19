@@ -1,0 +1,29 @@
+# deps
+node_modules/
+.pnp
+.pnp.js
+
+# next
+/.next/
+/out/
+next-env.d.ts
+
+# testing
+/playwright-report/
+/test-results/
+/blob-report/
+/playwright/.cache/
+
+# env — never commit real values (keep .env.example tracked)
+.env
+.env.*
+!.env.example
+*.pem
+.npmrc
+
+# misc
+.Rhistory
+.DS_Store
+npm-debug.log*
+tsconfig.tsbuildinfo
+.vercel

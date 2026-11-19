@@ -1,0 +1,10 @@
+.next
+node_modules
+Design System
+design-tokens
+demo_screens
+docs
+public
+package-lock.json
+*.html
+*.md
