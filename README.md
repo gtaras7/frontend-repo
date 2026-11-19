@@ -1,5 +1,8 @@
 # cardioguard-frontend
 
+### figma design: https://www.figma.com/design/ePzgsx1PgxR43iD3dxqLdI/CardioGuard-AI-%E2%80%94-Design-System?node-id=139-2&p=f&t=8EIPEsbYNcA2DmLw-0 
+
+
 Next.js 16 (App Router) · TypeScript · next-intl (el/en) · TanStack Query · Zustand · token-driven styling
 
 **Read `AGENTS.md` in this folder before you touch code.** It is the rules file: non-negotiables,
