@@ -18,11 +18,11 @@ npm run dev                    # http://localhost:3000 -> locale-prefixed onboar
 
 ## How to contribute
 
-1. Work on your own branch and try the change locally.
-2. Push the branch and open a pull request to `main`. Say what changed and how you tested it. Request a senior review.
-3. If the senior asks for changes, push your fixes to the same branch. Leave the merge to the senior.
+1. Make your change on a branch and try it locally. If you don’t have write access, use a branch in your own fork.
+2. Open a pull request to `gtaras7/frontend-repo:main`. Say what changed and how you tested it. Ask Giorgos (`@gtaras7`) for review.
+3. Push any requested fixes to the same branch. Giorgos approves and merges; students do not merge PRs.
 
-A senior reviews the diff, requests fixes if needed, and merges into `main` after approval and a passing `verify` check. The author cannot approve their own PR. For help, see the [student workflow](https://github.com/gtaras7/frontend-repo/wiki/Commit-and-PR-workflow) or [testing and troubleshooting](https://github.com/gtaras7/frontend-repo/wiki/Testing-and-troubleshooting).
+Giorgos (`@gtaras7`) is the sole senior reviewer and merger. He reviews student PRs and merges them after `verify` passes. For help, see the [student workflow](https://github.com/gtaras7/frontend-repo/wiki/Commit-and-PR-workflow) or [testing and troubleshooting](https://github.com/gtaras7/frontend-repo/wiki/Testing-and-troubleshooting).
 
 Production builds require an `https://` `NEXT_PUBLIC_API_URL` and always use NestJS rather
 than onboarding mocks. See `.env.example` and `docs/security-hardening.md`.
