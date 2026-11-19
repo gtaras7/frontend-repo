@@ -1,113 +1,56 @@
-# cardioguard-frontend
+# CardioGuard frontend
 
-Next.js 16 (App Router) · TypeScript · next-intl (el/en) · TanStack Query · Zustand · token-driven styling
+CardioGuard is a Greek and English cardiovascular prevention education demo built with Next.js and TypeScript. This is the public repository for the student frontend team. You can run the onboarding flow without a backend account. Use synthetic data only, including in issues, screenshots and test fixtures.
 
-**Read `AGENTS.md` in this folder before you touch code.** It is the rules file: non-negotiables,
-the BFF contract, the conventions, and how work flows. It wins over any other instruction.
-Then read `docs/frontend-ai-prompts.md` — use those prompts instead of freestyle chatting with an AI.
-
-For your first commit, follow the [student workflow and guide to Husky and Prettier](CONTRIBUTING.md).
+**New contributor?** Start with the [team wiki](https://github.com/gtaras7/frontend-repo/wiki), read the [project rules](AGENTS.md), then follow the [first-commit guide](CONTRIBUTING.md).
 
 ## Run it
 
-```bash
-npm install
-cp .env.example .env.local     # enables local onboarding mocks; configure NestJS URL as needed
-npm run dev                    # http://localhost:3000 -> locale-prefixed onboarding
+Use Node.js 22 and npm. On a fresh clone:
+
+```sh
+git clone https://github.com/gtaras7/frontend-repo.git
+cd frontend-repo
+npm ci
+cp .env.example .env.local
+npm run dev
 ```
 
-| Command | What it does | Where it must pass |
-|---|---|---|
-| `npm run dev` | dev server | — |
-| `npm run lint` | ESLint, incl. the BFF-contract import ban | CI + pre-commit |
-| `npm run typecheck` | `tsc --noEmit` | CI + before a PR |
-| `npm run format` | Prettier | pre-commit |
-| `npm run format:check` | Prettier check | CI + before a PR |
-| `npm run build` | production build | CI |
-| `npm run e2e` | Playwright at 1440x900 | before a PR |
+Open [Greek onboarding](http://localhost:3000/el/onboarding) or [English onboarding](http://localhost:3000/en/onboarding). The [example environment](.env.example) enables local mocks. Keep `.env.local` out of Git and restart the dev server after changing it.
 
-`npm run e2e` starts or reuses a dev server and enables onboarding mocks for the server it
-starts. To use an existing server explicitly, start it with `NEXT_PUBLIC_MOCK_ONBOARDING=1`
-and run `npm run e2e -- --config=playwright.local.config.ts`. This config does not start a
-server; its default origin is `http://127.0.0.1:3000`. Both configs accept
-`PLAYWRIGHT_BASE_URL`. CI currently runs the static checks, dependency audit, BFF gate and
-production build; E2E remains a local pre-PR check.
+Before opening a PR, run:
 
-Production builds require an `https://` `NEXT_PUBLIC_API_URL` and always use NestJS rather
-than onboarding mocks. See `.env.example` and `docs/security-hardening.md`.
-
-## Where does my code go?
-
-```
-app/[locale]/
-├── layout.tsx              root layout: fonts, <html lang>, i18n provider
-├── page.tsx                redirects the locale root to /onboarding
-│
-├── (auth)/                 shared onboarding Query provider
-│   ├── (split)/            brand column + content panel
-│   │   ├── onboarding/    01 Splash, 02 Welcome, 03 Consent, 05 Baseline
-│   │   └── register/      04 Account Setup
-│   └── onboarding/(setup)/
-│       ├── permissions/  06 Optional permissions
-│       ├── preparation/  07 Preparation and error
-│       ├── summary/      08 Starting Summary
-│       └── dashboard/    09 First-run Dashboard and its variants
-│
-└── (app)/                  app chrome; session protection is not implemented
-    ├── layout.tsx          persistent charcoal sidebar
-    ├── chat/               header + placeholder body
-    ├── dashboard/          Health header + placeholder body
-    ├── reminders/          header + placeholder body
-    └── settings/           header + placeholder body
-
-components/
-├── ui/                     design-system primitives, one folder per Figma section
-│   │                          (01-actions … 07-clinical — see its README)
-└── features/               onboarding/ and shell/ implementations
-
-lib/                        API client, onboarding endpoints and answer types, interim consent gate
-i18n/                       routing, navigation, request + el.json / en.json
-design-tokens/              shared tokens and exported Figma artwork
-e2e/                        bilingual onboarding and app-shell Playwright specs
+```sh
+npm run lint
+npm run typecheck
+npm run format:check
+NEXT_PUBLIC_API_URL=https://api.example.invalid npm run build
+npx playwright install chromium   # first run, or after a browser update
+npm run e2e
 ```
 
-**Feature-first, not layer-first.** A screen is a vertical slice: its route, its components, its
-hooks, its keys, its tests together. Don't scatter one feature across five folders.
+The HTTPS address is a placeholder for a local production build, not a deployed API. Playwright checks desktop Chromium at 1440 × 900. For an existing dev server or a failed check, see [Testing and troubleshooting](https://github.com/gtaras7/frontend-repo/wiki/Testing-and-troubleshooting).
 
-## Non-obvious things that will bite you
+## What works today
 
-- **`Link` and `useRouter`** come from `@/i18n/navigation`, never from `next/link` or
-  `next/navigation`. The Next ones are not locale-aware and will drop you to the wrong language.
-- **No hardcoded hex, px or font values.** Import from `@/design-tokens/tokens` and apply through
-  the `style` prop: `colors`, `spacing`, `radius`, `typography`. Type styles are spread, e.g.
-  `...typography.textMd`.
-- **No literal strings in components.** Every visible string, including `alt` text, is an i18n
-  key in `i18n/el.json` **and** `i18n/en.json`. Greek and English are equal, never a fallback.
-- **Status colours are health signals only.** success/warning/danger never appear as decoration.
-  Orange is action only — never a large fill.
-- **Server Components by default.** `"use client"` only where there is real interactivity.
-- **There is no Tailwind and no CSS framework.** Styling is inline, driven by
-  `design-tokens/tokens.ts`. The document reset and focus ring are inlined once in
-  `app/[locale]/layout.tsx` from token values — never add a second global CSS file with
-  hardcoded hex or px. The empty PostCSS configuration explicitly disables the default plugins.
+| Surface | What to expect |
+| --- | --- |
+| Onboarding | Splash, welcome, consent, demo account setup, baseline questions, optional permissions, preparation, summary and the first-run dashboard. Skipping all baseline questions gives an empty profile. |
+| Main app | Chat, Health, Reminders and Settings have a shared sidebar, headers and working navigation. Their page bodies are placeholders. `/en/onboarding/dashboard` is the implemented demo dashboard; `/en/dashboard` is the Health placeholder. Both exist in Greek under `/el`. |
+| Accounts and data | Registration is simulated; the shell is not protected by a session. The consent flag is a temporary UI gate, not a consent record. Real accounts, clinician screens and clinical data are outside the demo. |
 
-## Current boundaries and remaining screens
+## Where to make a change
 
-All seven sections of the Figma component library are ported (42 primitives). See the inventory
-in `components/ui/README.md`. The demo runs from Splash through Consent, Account Setup, Baseline,
-Permissions, Preparation, Starting Summary and the first-run Dashboard. Baseline answers stay in
-memory. Skip records an explicit missing answer, and skipping every baseline question leads to
-the first-run Dashboard's empty profile state. Real registration, guest continuation and
-clinician screens are pending. The four app pages have placeholder bodies.
+| For this task | Start here |
+| --- | --- |
+| Change an onboarding screen | [Route and screen handoff](docs/onboarding-desktop-handoff.md), then the matching panel in [`components/features/onboarding/`](components/features/onboarding/). |
+| Reuse a control or style | [Inventory of 42 UI primitives](components/ui/README.md) and [shared design tokens](design-tokens/tokens.ts). Use token-driven inline styles, not Tailwind. |
+| Change visible text or navigation | Update both [Greek](i18n/el.json) and [English](i18n/en.json). Use the [locale-aware navigation helpers](i18n/navigation.ts) so links keep the active language. |
+| Work with data or mocks | [Mock account fixtures](lib/api/mock-account.ts), [API type policy](types/README.md) and [security boundaries](docs/security-hardening.md). NestJS owns authentication, patient data and AI; don't invent endpoints in Next.js. |
+| Work with an AI coding assistant | Read [AGENTS.md](AGENTS.md) and the [frontend prompt pack](docs/frontend-ai-prompts.md). Never paste real patient data into a prompt. |
 
-The `(app)` group currently provides chrome only: users can deep-link to it, and its sidebar
-identity is synthetic. Authentication, session protection, onboarding progress and clinical
-data remain NestJS integration work. The registration cookie is a temporary non-PHI UI gate,
-not a consent record; replace it with the human-reviewed NestJS progress/auth contract before
-real-user staging. See `docs/security-hardening.md` for these boundaries.
+## From edit to merge
 
-Demo Query hooks live in `components/features/onboarding/`. TanStack Query owns server state.
-The `hooks/` and `stores/` directories reserve space for future shared hooks and UI state.
-Backend API types will be generated from OpenAPI as described in `types/README.md`.
+Edit on a feature branch, stage the files for your ticket, and commit. Husky runs `lint-staged` on matching **staged files**; it does not run the full lint, build or Playwright suite. `npm run format` rewrites eligible files across the repo. `npm run format:check` reports differences without changing files. The wiki explains [why the Husky and Prettier files are here](https://github.com/gtaras7/frontend-repo/wiki/Tooling-files-explained).
 
-See [the onboarding handoff](docs/onboarding-desktop-handoff.md) for the routes and [the mock account implementation](lib/api/mock-account.ts) for fixtures, failure switches and reset behaviour.
+Open a PR against `main`. Branch protection requires one approving review and a passing `verify` check. See the [commit and PR walkthrough](https://github.com/gtaras7/frontend-repo/wiki/Commit-and-PR-workflow) for the student workflow and [PR #6](https://github.com/gtaras7/frontend-repo/pull/6) for the workflow that supplies `verify`. Playwright remains a local pre-PR check.
